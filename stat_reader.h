@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <iosfwd>
@@ -8,7 +7,7 @@
 
 namespace stat {
 
-    void ParseAndPrintStat(const transport::TransportCatalogue& transport_catalogue, std::string_view request,
-        std::ostream& output);
+void ParseAndPrintStat(const transport::TransportCatalogue& transport_catalogue, std::string_view request,
+                       std::ostream& output);
 
 }//namespace stat
