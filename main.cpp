@@ -30,4 +30,3 @@ int main() {
         stat::ParseAndPrintStat(catalogue, line, cout);
     }
 }
-
