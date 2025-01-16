@@ -8,35 +8,36 @@
 
 namespace reader {
 
-    struct CommandDescription {
-        // Определяет, задана ли команда (поле command непустое)
-        explicit operator bool() const {
-            return !command.empty();
-        }
+    
+struct CommandDescription {
+    // РћРїСЂРµРґРµР»СЏРµС‚, Р·Р°РґР°РЅР° Р»Рё РєРѕРјР°РЅРґР° (РїРѕР»Рµ command РЅРµРїСѓСЃС‚РѕРµ)
+    explicit operator bool() const {
+        return !command.empty();
+    }
 
-        bool operator!() const {
-            return !operator bool();
-        }
+    bool operator!() const {
+        return !operator bool();
+    }
 
-        std::string command;      // Название команды
-        std::string id;           // id маршрута или остановки
-        std::string description;  // Параметры команды
-    };
+    std::string command;      // РќР°Р·РІР°РЅРёРµ РєРѕРјР°РЅРґС‹
+    std::string id;           // id РјР°СЂС€СЂСѓС‚Р° РёР»Рё РѕСЃС‚Р°РЅРѕРІРєРё
+    std::string description;  // РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјР°РЅРґС‹
+};
 
-    class InputReader {
-    public:
-        /**
-         * Парсит строку в структуру CommandDescription и сохраняет результат в commands_
-         */
-        void ParseLine(std::string_view line);
+class InputReader {
+public:
+    /**
+     * РџР°СЂСЃРёС‚ СЃС‚СЂРѕРєСѓ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ CommandDescription Рё СЃРѕС…СЂР°РЅСЏРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ commands_
+     */
+    void ParseLine(std::string_view line);
 
-        /**
-         * Наполняет данными транспортный справочник, используя команды из commands_
-         */
-        void ApplyCommands(transport::TransportCatalogue& catalogue) const;
+    /**
+     * РќР°РїРѕР»РЅСЏРµС‚ РґР°РЅРЅС‹РјРё С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹Р№ СЃРїСЂР°РІРѕС‡РЅРёРє, РёСЃРїРѕР»СЊР·СѓСЏ РєРѕРјР°РЅРґС‹ РёР· commands_
+     */
+    void ApplyCommands(transport::TransportCatalogue& catalogue) const;
 
-    private:
-        std::vector<CommandDescription> commands_;
-    };
-
+private:
+    std::vector<CommandDescription> commands_;
+};
+    
 }//namespace reader
